@@ -1,0 +1,40 @@
+
+/* ------------- FONTS ------------ */
+
+$font-sizes: (
+  xs: (size: 16px, weight: 300),
+  s: (size: 18px, weight: 400),
+  m: (size: 20px, weight: 500),
+  l: (size: 25px, weight: 600),
+  xl: (size: 30px, weight: 800),
+  );
+
+$font-family: (
+  font-primary: 'Oswald',
+  font-secondary: 'Rajdhani',
+  font-tertiary: 'Barlow Condensed',
+  font-form: 'Prompt'
+  );
+  
+  $font-primary: 'Oswald', sans-serif;
+  $font-secondary: 'Rajdhani', sans-serif;
+  $font-tertiary: 'Barlow Condensed', sans-serif;
+  $font-form: 'Prompt', sans-serif;
+
+/* ---------- TIPOGRAFIA ---------- */
+
+@each $font, $name in $font-family {
+    $font-key: $font;
+    $font-value: $name;
+
+    @each $size-name, $size-value in $font-sizes {
+        $size: map-get($size-value, size);
+        $weight: map-get($size-value, weight);
+
+        %#{$font-key}-#{$size-name} {
+            font-family: $font-value;
+            font-size: $size;
+            font-weight: $weight;
+        }
+    }
+}

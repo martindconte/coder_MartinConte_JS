@@ -1,0 +1,53 @@
+
+/* ---------- PAGE INDEX ---------- */
+
+.login {
+    @include column;
+    align-items: center;
+    gap: 10px;
+    // background-color: #fff0f0;
+    width: 60vw;
+    margin: 20px auto;
+    padding: 20px;
+    // border: solid 5px #ffcccc;
+    border-radius: 2rem;
+    h2 {
+        @extend %font-primary-xl;
+    }
+    &__titulo {
+        @extend %font-primary-l;
+    }
+    form {
+        @include column;
+        gap: 10px;
+        padding: 20px;
+        label {
+            @extend %font-form-s;
+            font-weight: 500
+        }
+        input {
+            @extend %font-form-s;
+            font-weight: 300;
+            border: none;
+            background-color: transparent;
+            box-shadow: 7px 7px 20px 5px #3b3b3b;
+            &:focus {
+                outline: none;
+            }
+        }
+        button {
+            @extend %font-form-s;
+            padding: 5px 10px;
+            background-color: #81ff81;
+            border: none;
+            border-radius: .25rem;
+            transition: background-color 1s ease, color 1s ease ;
+            margin-top: 10px;
+            &:hover {
+                background-color: #006d00;
+                color: $color-secondary;
+                border: none;
+            }
+        }
+    }
+}

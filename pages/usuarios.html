@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/favicon-logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- <link rel="stylesheet" href="./style.css/style.css"> -->
+    <title>GFCMusic - Administracion</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1>
+            <a href="../index.html">
+                <img class="header__logo" src="../img/header-logo.svg" alt="header-logo">
+                <span>GFCMusic | Administracion</span>
+            </a>
+        </h1>
+        <nav id='headerNavBar' class="header__nav oculto">
+            <ul class="header__menu">
+                <li id="headerUsuarioAdmin">
+                    <p>Administracion</p>
+                    <ul class="header__submenu oculto">
+                        <li><a href="./marcas.html">Marcas</a></li>
+                        <li><a href="">Modelos</a></li>
+                        <li><a href="./usuarios.html">Usuarios</a></li>
+                    </ul>
+                </li>
+                <li><a href=""></a>Productos</li>
+                <li><a href=""></a>Stock</li>
+                <li><a href=""></a>Productos para Venta</li>
+                <li><a href="">Ofertas</a></li>
+            </ul>
+        </nav>
+        <a href="" class="header__login">
+            <img src="../img/header-logueo.svg" alt="header-logueo">
+            <span id="headerUsuarioLogeueado">Iniciar Sesion</span>
+        </a>
+    </header>
+
+    <main class="mainUsuarios">
+        <p class="msjAlerta oculto" id="msjAlertaUsuario"></p>
+        <h2>GFCMusic - Administracion de Usuarios</h2>
+        <div class="usuarios">
+            <p>Registrar Nuevo Usuario</p>
+            <form id="formNuevoUsuario">
+                <label for="usuario">Nombre de Usuario<span>*</span></label>
+                <input type="text" id="usuario" required name="usuario">
+                <label for="password">Password<span>*</span></label>
+                <input type="password" id="password" required name="password">
+                <label for="nombre">Nombre Completo<span>*</span></label>
+                <input type="text" id="nombre" required name="nombre">
+                <label for="apellido">Apellido<span>*</span></label>
+                <input type="text" id="apellido" required name="apellido">
+                <label for="fechanacimiento">Fecha de Nacimiento<span>*</span></label>
+                <input type="date" id="fechanacimiento" required name="fechanacimiento">
+                <label for="telefono">Telefono:<span>*</span></label>
+                <input type="number" id="telefono" name="telefono" min="0" required>
+                <label for="email">Correo Electronico<span>*</span></label>
+                <input type="email" id="email" required name="email">
+                <label for="admin">Perfil Administrador<span>*</span></label>
+                <select name="admin" id="admin">
+                    <option value="false">NO</option>
+                    <option value="true">SI</option>
+                </select>
+                <button type="submit" class="btn-aceptar" id="btnFormRegistrar">Registrar</button>
+            </form>
+            <div class="usuarios__container">
+                <p>Lista de Usuarios Registrados</p>
+                <div id="tablaUsuarios"></div>
+                <button class="btnTableV__agregar oculto" id="btnUsuarioEliminarAceptar">CONFIRMAR</button>
+                <button class="btnTableV__agregar oculto" id="btnUsuarioCambiosAceptar">ACEPTAR</button>
+                <button class="btnTableV__eliminar oculto" id="btnUsuarioDescartar">DESCARTAR</button>
+            </div>
+        </div>
+        <div id="modalUsuarios"></div>
+
+    </main>
+
+    <footer>
+
+    </footer>
+    <script type="module" src="../js/header.js"></script>
+    <script type="module" src="../js/usuarios.js"></script>
+</body>
+</html>

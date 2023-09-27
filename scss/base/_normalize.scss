@@ -1,0 +1,121 @@
+/* ---------- NORMALIZE ---------- */
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* Reset básico */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form,
+label,
+table,
+tr,
+th,
+td,
+article,
+aside,
+canvas {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Correcciones para elementos HTML5 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* Asegura que los elementos bloque sean visibles como bloques */
+body {
+  line-height: 1;
+}
+
+/* Listas sin decoraciones */
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+/* Elementos de anclaje sin decoraciones */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Elementos de botón con estilo heredado en pre-HTML5 FF */
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+/* Elementos en línea por defecto a 'inline-block' */
+button,
+input {
+  display: inline-block;
+}
+
+/* Corrección de bordes de botón que no se muestran en Firefox */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* Tipografía y espaciado básico */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Evitar que las imágenes se extiendan más allá de su contenedor */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilos de formulario: eliminar la apariencia predeterminada de los campos de entrada */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  appearance: none;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  font-size: 16px;
+  line-height: 1.5;
+}

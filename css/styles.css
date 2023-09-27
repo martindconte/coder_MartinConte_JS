@@ -1,0 +1,575 @@
+@charset "UTF-8";
+/* ---------- BASE ---------- */
+/* ---------- NORMALIZE ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;800&display=swap");
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+/* Reset básico */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form,
+label,
+table,
+tr,
+th,
+td,
+article,
+aside,
+canvas {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* Correcciones para elementos HTML5 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* Asegura que los elementos bloque sean visibles como bloques */
+body {
+  line-height: 1;
+}
+
+/* Listas sin decoraciones */
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+/* Elementos de anclaje sin decoraciones */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Elementos de botón con estilo heredado en pre-HTML5 FF */
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+/* Elementos en línea por defecto a 'inline-block' */
+button,
+input {
+  display: inline-block;
+}
+
+/* Corrección de bordes de botón que no se muestran en Firefox */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* Tipografía y espaciado básico */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Evitar que las imágenes se extiendan más allá de su contenedor */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilos de formulario: eliminar la apariencia predeterminada de los campos de entrada */
+input[type=text],
+input[type=password],
+input[type=email],
+textarea {
+  appearance: none;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  padding: 6px 8px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* ------------ COLORS ------------ */
+/* ------ BACKGROUND COLOR -------- */
+/* ---------- FONTS ---------- */
+/* ------- COMPONENTS ------- */
+/* ------------- FONTS ------------ */
+/* ---------- TIPOGRAFIA ---------- */
+.btnTableV__eliminar, .btnTableV__modificar, .btnTableV__agregar {
+  font-family: "Oswald";
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.modal p, .modal, .modal__btnCancelar, .modal__btnConfirmar, .msjAlerta {
+  font-family: "Oswald";
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.login__titulo {
+  font-family: "Oswald";
+  font-size: 25px;
+  font-weight: 600;
+}
+
+h2, .login h2, .bienvenida {
+  font-family: "Oswald";
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.marcas__container table, .marcas input, .usuarios__container table {
+  font-family: "Rajdhani";
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.header__login, .header__nav {
+  font-family: "Rajdhani";
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.marcas__container p, .marcas, .usuarios__container p, .usuarios p {
+  font-family: "Rajdhani";
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.header {
+  font-family: "Rajdhani";
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.eliminando td, .modificando td {
+  font-family: "Barlow Condensed";
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.usuarios form input,
+.usuarios form select {
+  font-family: "Prompt";
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.usuarios form, .login form button, .login form input, .login form label, .btn-aceptar {
+  font-family: "Prompt";
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* -- CLASES COMUNES REUTILIZABLES -- */
+.bienvenida {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.btn-aceptar {
+  padding: 5px 10px;
+  background-color: #81ff81;
+  border: none;
+  border-radius: 0.25rem;
+  transition: background-color 1s ease, color 1s ease;
+  margin-top: 10px;
+}
+.btn-aceptar:hover {
+  background-color: #006d00;
+  color: #FFF;
+  border: none;
+}
+
+.btnTableV__eliminar, .btnTableV__modificar, .btnTableV__agregar {
+  padding: 5px;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.btnTableV__agregar {
+  background-color: green;
+  color: #FFF;
+  padding: 5px;
+}
+.btnTableV__modificar {
+  background-color: #6969ff;
+  color: #FFF;
+  padding: 5px;
+  transition: background 1s ease, color 1s ease;
+}
+.btnTableV__modificar:hover {
+  cursor: pointer;
+  background-color: #00008b;
+}
+.btnTableV__eliminar {
+  background-color: #fa3c3c;
+  color: #FFF;
+  padding: 5px;
+  transition: background 1s ease, color 1s ease;
+}
+.btnTableV__eliminar:hover {
+  cursor: pointer;
+  background-color: #8b0000;
+}
+
+.msjAlerta {
+  color: #000000;
+  transition: 0.3s ease;
+  border-radius: 0.5rem;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.msjAlerta {
+  position: fixed;
+  width: 80vw;
+  top: 120px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  background-color: #770000;
+  margin: 15px auto;
+  color: white;
+  z-index: 10;
+}
+
+.oculto {
+  display: none;
+}
+
+.modificando {
+  box-shadow: inset 0px 0px 17px 15px #8f96ff;
+}
+.modificando td {
+  font-weight: 600;
+}
+.modificando td input {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.eliminando {
+  box-shadow: inset 0 0 20px 7px #f78080;
+}
+.eliminando td {
+  font-weight: 800;
+}
+
+/* ------------- MODAL ------------ */
+.modal__btnCancelar, .modal__btnConfirmar {
+  margin: 0 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(187, 187, 187, 0.692);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 2;
+}
+.modal__ventana {
+  background-color: rgb(255, 255, 255);
+  padding: 30px 50px;
+  border-radius: 10px;
+  box-shadow: 9px 9px 20px 3px #831313, 8px 11px 17px 12px rgba(0, 0, 0, 0);
+  text-align: center;
+}
+.modal p {
+  margin: 0;
+}
+.modal__botones {
+  margin-top: 20px;
+  gap: 10px;
+}
+.modal__btnConfirmar {
+  background-color: #00c700;
+}
+.modal__btnConfirmar:hover {
+  background-color: #006900;
+  font-weight: 500;
+}
+.modal__btnCancelar {
+  background-color: #fd4a4a;
+}
+.modal__btnCancelar:hover {
+  background-color: #8f0000;
+  font-weight: 500;
+}
+
+/* -------- UTILITIES ------- */
+/* ------------ MIXINS ------------ */
+/* --------- LAYOUT --------- */
+/* ---------- PAGE INDEX ---------- */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: radial-gradient(circle, rgb(150, 30, 30) 0%, rgb(0, 0, 0) 75%);
+  color: #FFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+.header h1 {
+  width: 25vw;
+}
+.header h1 a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header h1 a img {
+  width: 75px;
+}
+.header__nav {
+  width: 50vw;
+}
+.header__menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.header__menu li:hover .header__submenu {
+  display: block;
+}
+.header__submenu {
+  display: none;
+  position: absolute;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: #691e1e;
+}
+.header__submenu li {
+  padding: 5px 10px;
+}
+.header__login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header__login img {
+  width: 40px;
+}
+
+/* ---------- PAGES --------- */
+/* ---------- PAGE INDEX ---------- */
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 60vw;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 2rem;
+}
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+.login form label {
+  font-weight: 500;
+}
+.login form input {
+  font-weight: 300;
+  border: none;
+  background-color: transparent;
+  box-shadow: 7px 7px 20px 5px #3b3b3b;
+}
+.login form input:focus {
+  outline: none;
+}
+.login form button {
+  padding: 5px 10px;
+  background-color: #81ff81;
+  border: none;
+  border-radius: 0.25rem;
+  transition: background-color 1s ease, color 1s ease;
+  margin-top: 10px;
+}
+.login form button:hover {
+  background-color: #006d00;
+  color: #FFF;
+  border: none;
+}
+
+/* --------- PAGE USUARIOS -------- */
+.mainUsuarios {
+  margin-top: 100px;
+}
+
+h2 {
+  margin: 20px;
+  text-align: center;
+}
+
+.usuarios {
+  margin: 0 20px 20px;
+}
+.usuarios form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 50%;
+}
+.usuarios form label {
+  margin-top: 10px;
+}
+.usuarios form input,
+.usuarios form select {
+  padding: 5px;
+  border: 1px solid black;
+}
+.usuarios form input:focus,
+.usuarios form select:focus {
+  box-shadow: 5px 7px 20px 1px rgb(145, 145, 145);
+  outline: none;
+}
+.usuarios form span {
+  padding: 0 5px;
+  font-weight: 800;
+  color: red;
+}
+.usuarios__container p {
+  margin-top: 30px;
+}
+.usuarios__container table {
+  border-collapse: collapse;
+  font-weight: 500;
+}
+.usuarios__container table tr {
+  border: 1px black solid;
+}
+.usuarios__container table tr th {
+  border: 1px black solid;
+  text-align: center;
+  padding: 5px;
+  background-color: rgb(154, 255, 171);
+}
+.usuarios__container table tr td {
+  padding: 5px 10px;
+  border: 1px black solid;
+  vertical-align: middle;
+}
+.usuarios__container table tr td input {
+  background-color: transparent;
+  border: none;
+}
+.usuarios__container table tr td input:focus {
+  background-color: rgb(137, 137, 255);
+  outline: none;
+}
+
+#tablaUsuarios {
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.mainMarcas {
+  margin-top: 100px;
+}
+
+.marcas {
+  font-weight: 800;
+  padding: 50px 10px;
+  margin-bottom: 20px;
+  background-color: #e6e6e6;
+  gap: 20px;
+}
+.marcas input {
+  margin-top: 20px;
+  padding: 5px;
+  width: 250px;
+  border: none;
+  background-color: #e6e6e6;
+  box-shadow: 8px 10px 36px 24px rgba(0, 0, 0, 0.67);
+}
+.marcas input:focus {
+  outline: none;
+}
+.marcas__container p {
+  margin-top: 30px;
+}
+.marcas__container table {
+  border-collapse: collapse;
+  font-weight: 500;
+}
+.marcas__container table tr {
+  border: 1px black solid;
+}
+.marcas__container table tr th {
+  border: 1px black solid;
+  text-align: center;
+  padding: 5px;
+  background-color: rgb(154, 255, 171);
+}
+.marcas__container table tr td {
+  padding: 5px 10px;
+  border: 1px black solid;
+  vertical-align: middle;
+}
+.marcas__container table tr td input {
+  background-color: transparent;
+  border: none;
+}
+.marcas__container table tr td input:focus {
+  background-color: rgb(137, 137, 255);
+  outline: none;
+}
+
+/*# sourceMappingURL=styles.css.map */

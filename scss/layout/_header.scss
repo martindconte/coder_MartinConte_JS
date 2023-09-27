@@ -1,0 +1,63 @@
+/* ---------- PAGE INDEX ---------- */
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: $bg-header;
+    color: $color-secondary;
+    @extend %font-secondary-xl;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    h1 {
+        width: 25vw;
+        a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            img {
+                width: 75px;
+            }
+        }
+    } 
+    &__nav {
+        @extend %font-secondary-m;
+        width: 50vw;
+    }
+    &__menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        li {
+
+            &:hover{
+                .header__submenu {
+                    display: block;
+                }
+            }
+
+        }
+    }
+    &__submenu {
+        display: none;
+        position: absolute;
+        font-size: 18px;
+        font-weight: 400;
+        background-color: #691e1e;
+        li {
+            padding: 5px 10px;
+        }
+    }
+    &__login {
+        @extend %font-secondary-m;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        img {
+            width: 40px;
+        }
+    }
+}

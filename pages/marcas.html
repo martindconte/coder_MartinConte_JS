@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/favicon-logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>GFCMusic - Catalog de Marcas</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1>
+            <a href="../index.html">
+                <img class="header__logo" src="../img/header-logo.svg" alt="header-logo">
+                <span>GFCMusic | Administracion</span>
+            </a>
+        </h1>
+        <nav id='headerNavBar' class="header__nav oculto">
+            <ul class="header__menu">
+                <li id="headerUsuarioAdmin">
+                    <p>Administracion</p>
+                    <ul class="header__submenu oculto">
+                        <li><a href="./marcas.html">Marcas</a></li>
+                        <li><a href="">Modelos</a></li>
+                        <li><a href="./usuarios.html">Usuarios</a></li>
+                    </ul>
+                </li>
+                <li><a href=""></a>Productos</li>
+                <li><a href=""></a>Stock</li>
+                <li><a href=""></a>Productos para Venta</li>
+                <li><a href="">Ofertas</a></li>
+            </ul>
+        </nav>
+        <a href="" class="header__login">
+            <img src="../img/header-logueo.svg" alt="header-logueo">
+            <span id="headerUsuarioLogeueado">Iniciar Sesion</span>
+        </a>
+    </header>
+
+    <main class="mainMarcas">
+        <div class="msjAlerta oculto" id="alertaMarca"></div>
+        <div class="marcas">
+            <p>CATALOGO DE MARCAS</p>
+            <div class="msjAlerta oculto" id="alertaCreacionMarca"></div>
+            <input id="marcaIngresada" type="text" placeholder="Ingrese la MARCA a Registrar">
+            <button id="marcasRegistar" class="btn-aceptar">REGISTRAR</button>
+        </div>
+        <div class="marcas__container">
+            <p>Lista de Usuarios Registrados</p>
+            <div class="marcas__tabla" id="tablaMarcas"></div>
+            <button class="btnTableV__agregar oculto" type="input" id="btnMarcasCambiosAceptar">ACEPTAR</button>
+            <button class="btnTableV__agregar oculto" type="input" id="btnMarcasEliminarAceptar">CONFIRMAR</button>
+            <button class="btnTableV__eliminar oculto" type="input" id="btnMarcasDescartar">DESCARTAR</button>
+        </div>
+    </main>
+
+    <footer></footer>
+    <script type="module" src="../js/header.js"></script>
+    <script type="module" src="../js/marcas.js"></script>
+</body>
+
+</html>

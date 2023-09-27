@@ -1,0 +1,13 @@
+
+/* ------------ MIXINS ------------ */
+
+@mixin row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@mixin column {
+    display: flex;
+    flex-direction: column;
+}

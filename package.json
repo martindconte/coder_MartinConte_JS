@@ -1,0 +1,11 @@
+{
+  "name": "gcfmusic_martin_conte",
+  "version": "1.0.0",
+  "description": "Proyecto Aplicacion Adminitracion",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

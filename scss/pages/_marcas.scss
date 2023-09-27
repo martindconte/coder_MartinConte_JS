@@ -1,0 +1,62 @@
+.mainMarcas {
+  margin-top: 100px;
+}
+
+.marcas {
+  @extend %font-secondary-l;
+  font-weight: 800;
+  padding: 50px 10px;
+  margin-bottom: 20px;
+  background-color: #e6e6e6;
+  gap: 20px;
+
+  input {
+    @extend %font-secondary-s;
+    margin-top: 20px;
+    padding: 5px;
+    width: 250px;
+    border: none;
+    background-color: #e6e6e6;
+    box-shadow: 8px 10px 36px 24px rgba(0, 0, 0, 0.67);
+
+    &:focus {
+      outline: none;
+    }
+  }
+  &__container {
+    p {
+      margin-top: 30px;
+      @extend %font-secondary-l;
+    }
+    table {
+      border-collapse: collapse;
+      @extend %font-secondary-s;
+      font-weight: 500;
+
+      tr {
+        border: 1px black solid;
+
+        th {
+          border: 1px black solid;
+          text-align: center;
+          padding: 5px;
+          background-color: rgb(154, 255, 171);
+        }
+
+        td {
+          padding: 5px 10px;
+          border: 1px black solid;
+          vertical-align: middle;
+          input {
+            background-color: transparent;
+            border: none;
+            &:focus {
+              background-color: rgb(137, 137, 255);
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

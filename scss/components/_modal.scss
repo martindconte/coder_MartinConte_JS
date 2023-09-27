@@ -1,0 +1,58 @@
+
+/* ------------- MODAL ------------ */
+
+%btnModal {
+    @extend %font-primary-m;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;    
+    color: white;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(187, 187, 187, 0.692);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    @extend %font-primary-m;
+    z-index: 2;
+    &__ventana {
+        background-color: rgb(255, 255, 255);
+        padding: 30px 50px;
+        border-radius: 10px;
+        box-shadow: 9px 9px 20px 3px #831313, 8px 11px 17px 12px rgb(0 0 0 / 0%);
+        text-align: center;
+    }
+    p {
+        @extend %font-primary-m;
+        margin: 0;
+    }
+    &__botones {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    &__btnConfirmar {
+        @extend %btnModal;
+        background-color: #00c700;
+        &:hover {
+            background-color: #006900;
+            font-weight: 500;
+        }
+    }
+    &__btnCancelar {
+        @extend %btnModal;
+        background-color: #fd4a4a;
+        &:hover {
+            background-color: #8f0000;
+            font-weight: 500;
+        }
+    }
+}

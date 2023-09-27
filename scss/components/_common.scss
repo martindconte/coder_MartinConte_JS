@@ -1,0 +1,111 @@
+
+/* -- CLASES COMUNES REUTILIZABLES -- */
+
+.bienvenida {
+    padding: 10px 20px;
+    @extend %font-primary-xl;
+    text-align: center;
+}
+
+.btn-aceptar {
+    @extend %font-form-s;
+    padding: 5px 10px;
+    background-color: #81ff81;
+    border: none;
+    border-radius: .25rem;
+    transition: background-color 1s ease, color 1s ease ;
+    margin-top: 10px;
+    &:hover {
+        background-color: #006d00;
+        color: $color-secondary;
+        border: none;
+    }
+}
+
+%btnTableV {
+    @extend %font-primary-s;
+    padding: 5px;
+    border: none;
+    border-radius: .25rem;
+}
+
+.btnTableV {
+    &__agregar {
+        @extend %btnTableV;
+        background-color: green;
+        color: $color-secondary;
+        padding: 5px;
+    }
+    &__modificar {
+        @extend %btnTableV;
+        background-color: #6969ff;
+        color: $color-secondary;
+        padding: 5px;
+        transition: background 1s ease, color 1s ease;
+        &:hover {
+            cursor: pointer;
+            background-color: #00008b;
+        }
+    }
+    &__eliminar {
+        @extend %btnTableV;
+        background-color: #fa3c3c;
+        color: $color-secondary;
+        padding: 5px;
+        transition: background 1s ease, color 1s ease;
+        &:hover {
+            cursor: pointer;
+            background-color: #8b0000;
+        }
+    }
+}
+
+%mensajeAlerta {
+    @extend %font-primary-m;
+    color: $color-primary;
+    transition: 0.3s ease;
+    border-radius: .5rem;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.msjAlerta {
+    position: fixed;
+    width: 80vw;
+    top: 120px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    @extend %mensajeAlerta;
+    background-color: #770000;
+    margin: 15px auto;
+    color: white;
+    z-index: 10;
+}
+
+.oculto {
+    display: none;
+}
+
+
+.modificando {
+    box-shadow: inset 0px 0px 17px 15px #8f96ff;
+    td {
+        @extend %font-tertiary-m;
+        font-weight: 600;
+        input {
+            font-family: inherit;
+            font-weight: inherit;
+            font-size: inherit;
+        }
+    }
+}
+
+.eliminando {
+    box-shadow: inset 0 0 20px 7px #f78080;
+    td {
+        @extend %font-tertiary-m;
+        font-weight: 800;   
+    }
+}
