@@ -223,6 +223,9 @@ h2, .login h2, .bienvenida {
   border: none;
   border-radius: 0.25rem;
 }
+.btnTableV__eliminar:hover, .btnTableV__modificar:hover, .btnTableV__agregar:hover {
+  cursor: pointer;
+}
 
 .btnTableV__agregar {
   background-color: green;
