@@ -155,7 +155,13 @@ h2, .login h2, .bienvenida {
   font-weight: 800;
 }
 
-.marcas__container table, .marcas input, .usuarios__container table {
+.productos__container table tr td input[type=file] {
+  font-family: "Rajdhani";
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.productos__container table, .productos form input, .productos form select, .modelos__tabla table, .modelos form input, .modelos form select, .marcas__container table, .marcas input, .usuarios__container table {
   font-family: "Rajdhani";
   font-size: 18px;
   font-weight: 400;
@@ -167,7 +173,7 @@ h2, .login h2, .bienvenida {
   font-weight: 500;
 }
 
-.marcas__container p, .marcas, .usuarios__container p, .usuarios p {
+.productos, .modelos__container p, .modelos, .marcas__container p, .marcas, .usuarios__container p, .usuarios p {
   font-family: "Rajdhani";
   font-size: 25px;
   font-weight: 600;
@@ -290,6 +296,16 @@ h2, .login h2, .bienvenida {
   font-weight: inherit;
   font-size: inherit;
 }
+.modificando td select {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  background-color: transparent;
+  border: none;
+}
+.modificando td select:focus {
+  outline: none;
+}
 
 .eliminando {
   box-shadow: inset 0 0 20px 7px #f78080;
@@ -409,6 +425,10 @@ h2, .login h2, .bienvenida {
 
 /* ---------- PAGES --------- */
 /* ---------- PAGE INDEX ---------- */
+.mainIndex {
+  margin-top: 100px;
+}
+
 .login {
   display: flex;
   flex-direction: column;
@@ -523,6 +543,7 @@ h2 {
   padding: 20px 0;
 }
 
+/* ---------- PAGE MARCAS --------- */
 .mainMarcas {
   margin-top: 100px;
 }
@@ -544,6 +565,9 @@ h2 {
 }
 .marcas input:focus {
   outline: none;
+}
+.marcas__container {
+  padding: 50px 10px;
 }
 .marcas__container p {
   margin-top: 30px;
@@ -572,6 +596,196 @@ h2 {
 }
 .marcas__container table tr td input:focus {
   background-color: rgb(137, 137, 255);
+  outline: none;
+}
+
+/* ---------- PAGE MODELOS -------- */
+.mainModelos {
+  margin-top: 100px;
+}
+
+.modelos {
+  font-weight: 800;
+  padding: 30px 30px;
+  background-color: #e6e6e6;
+}
+.modelos form {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.modelos form label {
+  margin-right: 10px;
+  font-weight: 500;
+}
+.modelos form select {
+  padding: 5px;
+  box-shadow: 8px 10px 36px 24px rgba(0, 0, 0, 0.67);
+}
+.modelos form input {
+  padding: 5px;
+  width: 250px;
+  border: none;
+  background-color: #e6e6e6;
+  box-shadow: 8px 10px 36px 24px rgba(0, 0, 0, 0.67);
+}
+.modelos form input:focus {
+  outline: none;
+}
+.modelos form button {
+  margin: 0;
+}
+.modelos p {
+  margin-bottom: 10px;
+}
+.modelos__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 30px 10px;
+  gap: 20px;
+}
+.modelos__tabla {
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.modelos__tabla table {
+  border-collapse: collapse;
+  font-weight: 500;
+}
+.modelos__tabla table tr {
+  border: 1px black solid;
+}
+.modelos__tabla table tr th {
+  border: 1px black solid;
+  text-align: center;
+  padding: 5px;
+  background-color: rgb(154, 255, 171);
+}
+.modelos__tabla table tr td {
+  padding: 5px 10px;
+  border: 1px black solid;
+  vertical-align: middle;
+}
+.modelos__tabla table tr td input {
+  background-color: transparent;
+  border: none;
+}
+.modelos__tabla table tr td input:focus {
+  background-color: rgb(137, 137, 255);
+  outline: none;
+}
+
+/* --------- PAGE PRODUCTOS ------- */
+.mainProductos {
+  margin-top: 100px;
+}
+
+.productos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px;
+}
+.productos form {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 20px;
+  width: fit-content;
+}
+.productos form label {
+  margin-right: 10px;
+  font-weight: 500;
+  display: inline;
+}
+.productos form select {
+  padding: 5px;
+  box-shadow: 8px 10px 36px 24px rgba(0, 0, 0, 0.67);
+  width: fit-content;
+  min-width: 300px;
+  background-color: #e6e6e6;
+}
+.productos form textarea {
+  width: 300px;
+  height: 100px;
+  box-shadow: 8px 10px 36px 24px rgba(0, 0, 0, 0.67);
+  background-color: #e6e6e6;
+}
+.productos form input {
+  padding: 5px;
+  width: 300px;
+  border: none;
+  background-color: #e6e6e6;
+  box-shadow: 8px 10px 36px 24px rgba(0, 0, 0, 0.67);
+}
+.productos form input[type=file i] {
+  background-color: #e6e6e6;
+  box-shadow: 8px 10px 36px 24px rgba(0, 0, 0, 0.67);
+}
+.productos form input:focus {
+  outline: none;
+}
+.productos__container table {
+  border-collapse: collapse;
+  font-weight: 500;
+  box-shadow: 8px 10px 36px 24px rgba(0, 0, 0, 0.67);
+}
+.productos__container table tr {
+  border: 1px black solid;
+}
+.productos__container table tr th {
+  border: 1px black solid;
+  text-align: center;
+  padding: 5px;
+  background-color: rgb(154, 255, 171);
+}
+.productos__container table tr th:nth-child(6) {
+  width: 200px;
+}
+.productos__container table tr td {
+  padding: 5px 10px;
+  border: 1px black solid;
+  white-space: wrap;
+  vertical-align: middle;
+}
+.productos__container table tr td:nth-child(6) {
+  width: 200px;
+}
+.productos__container table tr td:nth-child(8) {
+  width: 50px;
+}
+.productos__container table tr td input {
+  width: 75px;
+  font-weight: 600;
+  background-color: transparent;
+  border: none;
+}
+.productos__container table tr td input[type=file] {
+  width: 140px;
+  display: block;
+  white-space: wrap;
+}
+.productos__container table tr td input[type=number] {
+  width: 100px;
+  white-space: wrap;
+  text-align: center;
+}
+.productos__container table tr td input:focus {
+  outline: none;
+}
+.productos__container table tr td select {
+  background-color: transparent;
+  font-weight: 600;
+}
+.productos__container table tr td select option:checked {
+  background-color: rgb(77, 77, 253);
+  color: white;
+}
+.productos__container table tr td select:focus {
   outline: none;
 }
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../img/favicon-logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../css/styles.css">
-    <title>GFCMusic - Catalog de Marcas</title>
+    <title>GFCMusic - Administracion</title>
 </head>
 
 <body>
@@ -39,28 +39,32 @@
         </a>
     </header>
 
-    <main class="mainMarcas">
-        <div class="msjAlerta oculto" id="msjAlertaMarca"></div>
-        <div class="marcas">
-            <p>CATALOGO DE MARCAS</p>
-            <div class="msjAlerta oculto" id="alertaCreacionMarca"></div>
-            <input id="marcaIngresada" type="text" placeholder="Ingrese la MARCA a Registrar">
-            <button id="marcasRegistar" class="btn-aceptar">REGISTRAR</button>
+    <main class="mainModelos">
+        <div class="msjAlerta oculto" id="alertaModelo"></div>
+        <div class="modelos">    
+            <p>CATALOGO DE MODELOS POR MARCA</p>
+            <form id="formularioNuevoModelo">
+                <input id="modeloIngresado" name="modelo" type="text" placeholder="Ingrese el Modelo a Registrar">
+                <button id="modeloRegistrar" class="btn-aceptar" type="submit">REGISTRAR</button>
+            </form>
         </div>
-        <div class="marcas__container">
-            <p>Lista de Usuarios Registrados</p>
-            <div class="marcas__tabla" id="tablaMarcas"></div>
-            <button class="btnTableV__agregar oculto" type="input" id="tablaMarcasAceptarBtn">ACEPTAR</button>
-            <button class="btnTableV__agregar oculto" type="input" id="tablaMarcasEliminarBtn">CONFIRMAR</button>
-            <button class="btnTableV__eliminar oculto" type="input" id="tablaMarcasDescartarBtn">DESCARTAR</button>
+        <div class="modelos__container">
+            <p>Lista de Modelos Registrados</p>
+            <div class="modelos__tabla">
+                <div id="tablaModelos"></div>
+                <button class="btnTableV__agregar oculto" id="tablaModelosAceptarBtn">CONFIRMAR</button>
+                <button class="btnTableV__agregar oculto" id="tablaModelosEliminarBtn">ACEPTAR</button>
+                <button class="btnTableV__eliminar oculto" id="tablaModelosDescartarBtn">DESCARTAR</button>
+            </div>
         </div>
-        <div id="modalMarcas"></div>
+        <!-- <div class="msjAlerta oculto" id="alertaModificacionModelo"></div> -->
+    
     </main>
 
-    <footer></footer>
+    <footer>
+    </footer>
     <script type="module" src="../js/header.js"></script>
-    <script type="module" src="../js/marcas.js"></script>
+    <script type="module" src="../js/modelos.js"></script>
     <script type="module" src="../js/fnEventos.js"></script>
 </body>
-
 </html>

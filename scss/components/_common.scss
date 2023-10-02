@@ -102,6 +102,16 @@
             font-weight: inherit;
             font-size: inherit;
         }
+        select {
+            font-family: inherit;
+            font-weight: inherit;
+            font-size: inherit;
+            background-color: transparent;
+            border: none;
+            &:focus {
+                outline: none;
+            }
+        }
     }
 }
 

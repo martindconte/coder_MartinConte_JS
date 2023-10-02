@@ -1,3 +1,4 @@
+import { modificarDatosTablas } from "./fnEventos.js";
 import {
     buscarYReemplazarID,
     creacionInput,
@@ -8,7 +9,6 @@ import {
     eliminarElementoArray,
     encontrarCelda,
     generarCodigoUnico,
-    modificarDatosTablas,
     ordenarArray,
     tablaHorizontal,
     valoresRepetidos
@@ -31,29 +31,29 @@ class Usuario {
 
 //! funciones locales
 
-const ocultarBtnModificar = () => {
-    document.getElementById('btnFormRegistrar').classList.add('oculto')
-    document.getElementById('btnUsuarioCambiosAceptar').classList.remove('oculto')
-    document.getElementById('btnUsuarioDescartar').classList.remove('oculto')
-}
+// const ocultarBtnModificar = () => {
+//     document.getElementById('btnFormRegistrar').classList.add('oculto')
+//     document.getElementById('btnUsuarioCambiosAceptar').classList.remove('oculto')
+//     document.getElementById('btnUsuarioDescartar').classList.remove('oculto')
+// }
 
-const mostrarBtnModificar = () => {
-    document.getElementById('btnFormRegistrar').classList.remove('oculto')
-    document.getElementById('btnUsuarioCambiosAceptar').classList.add('oculto')
-    document.getElementById('btnUsuarioDescartar').classList.add('oculto')
-}
+// const mostrarBtnModificar = () => {
+//     document.getElementById('btnFormRegistrar').classList.remove('oculto')
+//     document.getElementById('btnUsuarioCambiosAceptar').classList.add('oculto')
+//     document.getElementById('btnUsuarioDescartar').classList.add('oculto')
+// }
 
-const mostrarBtnEliminar = () => {
-    document.getElementById('btnFormRegistrar').classList.add('oculto')
-    document.getElementById('btnUsuarioEliminarAceptar').classList.remove('oculto')
-    document.getElementById('btnUsuarioDescartar').classList.remove('oculto')
-}
+// const mostrarBtnEliminar = () => {
+//     document.getElementById('btnFormRegistrar').classList.add('oculto')
+//     document.getElementById('btnUsuarioEliminarAceptar').classList.remove('oculto')
+//     document.getElementById('btnUsuarioDescartar').classList.remove('oculto')
+// }
 
-const ocultarBtnEliminar = () => {
-    document.getElementById('btnFormRegistrar').classList.remove('oculto')
-    document.getElementById('btnUsuarioEliminarAceptar').classList.add('oculto')
-    document.getElementById('btnUsuarioDescartar').classList.add('oculto')
-}
+// const ocultarBtnEliminar = () => {
+//     document.getElementById('btnFormRegistrar').classList.remove('oculto')
+//     document.getElementById('btnUsuarioEliminarAceptar').classList.add('oculto')
+//     document.getElementById('btnUsuarioDescartar').classList.add('oculto')
+// }
 
 //! variables globales
 // array con las claves que no pueden tener el mismo valor. Por ejemplo dos usuarios con el mismo telefono
@@ -88,9 +88,7 @@ document.getElementById('formNuevoUsuario').onsubmit = (e) => {
 
     const formNuevoUsuario = document.getElementById('formNuevoUsuario');
     const formDataNuevoUsuario = new FormData(formNuevoUsuario);
-    formDataNuevoUsuario.forEach((value, key) => {
-        nuevoUsuario[key] = value;
-    })
+    formDataNuevoUsuario.forEach((value, key) => nuevoUsuario[key] = value);
 
     // verifico que todos los datos hayan sido cargados
     const datoVacio = Object.values(nuevoUsuario).some(value => value == '');
@@ -115,13 +113,9 @@ document.getElementById('formNuevoUsuario').onsubmit = (e) => {
 
 
 document.getElementById('tablaUsuarios').onclick = (e) => {
-    
-        modificarDatosTablas (e, 'tablaUsuarios', usuarios, 'usuarios', arrayNuevoUsuarioNoRepetir, ordenarUsuarios)
+
+    modificarDatosTablas(e, 'tablaUsuarios', usuarios, 'usuarios', arrayNuevoUsuarioNoRepetir, ordenarUsuarios)
 }
-
-
-
-
 
 
 // ? modificacion de usuarios registrados (modificar o eliminar)

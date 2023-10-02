@@ -1,3 +1,5 @@
+import { modificarDatosTablas } from "./fnEventos.js";
+
 import {
     buscarKeyValue,
     buscarYReemplazarID,
@@ -15,7 +17,7 @@ import {
 
 //! constructores
 
-export class Marca {
+class Marca {
     constructor(objeto) {
         !objeto.id ? this.id = generarCodigoUnico() : this.id = objeto.id
         this.marca = objeto.marca;
@@ -44,7 +46,6 @@ let marcas = marcasLS ? marcasLS.map(marca => new Marca(marca)) : [];
 //! codigo de la pagina
 
 // creacion de tabla mostrando las marcas registradas
-
 tablaHorizontal(marcas, 'tablaMarcas')
 
 // registro de nueva marca, se agrega en el array marcas y se guarda en local storage
@@ -74,8 +75,8 @@ document.getElementById('marcasRegistar').onclick = () => {
     }
 }
 
-document.getElementById('tablaUsuarios').onclick = (e) => {
-    
+document.getElementById('tablaMarcas').onclick = (e) => {
+
     modificarDatosTablas (e, 'tablaMarcas', marcas, 'marcas', clavesNoRepetir, ordenarMarca)
 
 }

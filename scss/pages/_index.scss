@@ -1,6 +1,10 @@
 
 /* ---------- PAGE INDEX ---------- */
 
+.mainIndex {
+    margin-top: 100px;
+  }
+
 .login {
     @include column;
     align-items: center;

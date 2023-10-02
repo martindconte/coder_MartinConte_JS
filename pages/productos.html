@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/favicon-logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>GFCMusic - Administracion</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1>
+            <a href="../index.html">
+                <img class="header__logo" src="../img/header-logo.svg" alt="header-logo">
+                <span>GFCMusic | Administracion</span>
+            </a>
+        </h1>
+        <nav id='headerNavBar' class="header__nav oculto">
+            <ul class="header__menu">
+                <li id="headerUsuarioAdmin">
+                    <p>Administracion</p>
+                    <ul class="header__submenu oculto">
+                        <li><a href="./marcas.html">Marcas</a></li>
+                        <li><a href="./modelos.html">Modelos</a></li>
+                        <li><a href="./usuarios.html">Usuarios</a></li>
+                    </ul>
+                </li>
+                <li><a href="./productos.html">Productos</a></li>
+                <li><a href="">Stock</a></li>
+                <li><a href="">Productos para Venta</a></li>
+                <li><a href="">Ofertas</a></li>
+            </ul>
+        </nav>
+        <a href="" class="header__login">
+            <img src="../img/header-logueo.svg" alt="header-logueo">
+            <span id="headerUsuarioLogeueado">Iniciar Sesion</span>
+        </a>
+    </header>
+
+    <main class="mainProductos">
+        <div class="msjAlerta oculto" id="alertaProducto"></div>
+        <div class="productos">
+            <p>ADMINISTRACION DE PRODUCTOS CARGADOS</p>
+            <div class="msjAlerta oculto" id="alertaCreacionProducto"></div>
+            <form id="formProducto">
+                <label for="productoTpoIngresado">Tipo de Producto</label>
+                <input id="productoTpoIngresado" type="text" name="tipo" placeholder="Ingrese el TIPO - Guitarra / Bajo / Bateria">
+                <label for="productoOrigenIngresado">Origen del Producto</label>
+                <input id="productoOrigenIngresado" type="text" name="origen" placeholder="Ingrese el ORIGEN del producto">
+                <label for="descripcion">Descripcion</label>
+                <textarea name="descripcion" placeholder="Ingrese la DESCRIPCION del producto"></textarea>
+                <label for="productoImagen">Ruta Imagen del Producto</label>
+                <input id="productoImagen" type="file" name="imagen" accept="image/*" multiple placeholder="HOLA">
+                <label for="productoPrecioIngresado">Precio del Producto</label>
+                <input id="productoPrecioIngresado" type="number" min="0" name="precio" step="0.01" placeholder="Ingrese el PRECIO del producto">
+                <label for="productoStockIngresado">Stock Disponible</label>
+                <input id="productoStockIngresado" type="number" min="0" name="stock" placeholder="Ingrese el PRECIO del producto">
+                <button class="btn-aceptar" id="productoRegistrar" type="submit">REGISTRAR</button>
+            </form>
+            <div class="productos__container">
+                <div id="tablaProductos"></div>
+                <button class="btnTableV__agregar oculto" id="tablaProductosEliminarBtn">CONFIRMAR</button>
+                <button class="btnTableV__agregar oculto" id="tablaProductosAceptarBtn">ACEPTAR</button>
+                <button class="btnTableV__eliminar oculto" id="tablaProductosDescartarBtn">DESCARTAR</button>
+            </div>
+        </div>
+            
+    </main>
+
+    <footer>
+    </footer>
+    <script type="module" src="../js/header.js"></script>
+    <script type="module" src="../js/productos.js"></script>
+    <script type="module" src="../js/fnEventos.js"></script>
+</body>
+
+</html>

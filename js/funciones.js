@@ -29,7 +29,7 @@ export const crearAlerta = (text, id) => {
 
 /**
  * funcion que busca un elemento en un array. Compara si existe un elemento que posea los
- * mismos valores para las claves detalladas en el array.
+ * mismos valores para //! TODAS LAS CLAVES detalladas en el array.
  *
  * @param {Array} array array donde deseo comparar a element
  * @param {Object || Array} elemento objeto que deseo buscar en array
@@ -38,15 +38,26 @@ export const crearAlerta = (text, id) => {
  */
 export const buscarKeyValue = (array, elemento, claves) => {
   const index = array.findIndex((objArray) => {
-    // verifico si es un array
-    if (Array.isArray(elemento)) {
-      console.log("constinuar construyendo...");
-      // si no es un array es un objeto
-    } else {
-      return claves.every(
-        (key) => elemento[key].toLowerCase() == objArray[key].toLowerCase()
-      );
-    }
+    return claves.every(key => {
+      // verifico si elemento es un array
+      if (Array.isArray(elemento)) {
+        return elemento.some(objeto => {
+          if (objeto.id != objArray.id) {
+            return objeto[key].toLowerCase() == objArray[key].toLowerCase();
+          }
+        })
+      // si no es un array lo conidero un objeto
+      } else {
+        return elemento[key].toLowerCase() == objArray[key].toLowerCase();
+      }
+    })
+    // // verifico si es un array
+    // if (Array.isArray(elemento)) {
+    //   return cla
+    //   // si no es un array es un objeto
+    // } else {
+    //   return claves.every((key) => elemento[key].toLowerCase() == objArray[key].toLowerCase());
+    // }
   });
 
   return index;
@@ -103,8 +114,10 @@ export const buscarDatosRepetidos = (elemento, array, claves) => {
   }
 }
 
+
+//TODO REVIISAR SI SE PUEDE DEJAR DE USAR. REEMPLAZA buscarDatosRepetidos
 /**
- * funcion que busca un elemento en un array para determinar si para una clave dada (en el array claves) existe //!AL MENOS UNO
+ * funcion que busca un elemento en un array para determinar si para una clave dada (en el array claves) existe
  * objeto en array que poseea el mismo valor. Por ejemplo si cargo un usuario con el cel 123456, busco si hay algun otro
  * usuario dentro de array que poseea ese mismo cel. Si lo encuentra devuelve la posicion en el array
  *
@@ -117,10 +130,7 @@ export const valoresRepetidos = (array, elemento, claves) => {
   const index = array.findIndex((objArray) => {
     if (objArray.id != elemento.id) {
       return claves.some((key) => {
-        if (
-          typeof elemento[key] === "number" &&
-          typeof objArray[key] === "number"
-        ) {
+        if ( typeof elemento[key] === "number" && typeof objArray[key] === "number") {
           return elemento[key] === objArray[key];
         } else {
           return elemento[key].toLowerCase() === objArray[key].toLowerCase();
@@ -211,6 +221,39 @@ export const eliminarElementoArray = (array, arrayId) => {
 //     return array.filter(objeto => objeto.id !== elemento.id);
 //   }
 // }
+
+/**
+ * busco si algun objeto que este dentro de un array posea un value = ''
+ * @param {Array || Object} elemento array que tiene objetos donde deseo buscar valores vacios  
+ * @returns {boolean} true o false
+ */
+export const campoVacio = (elemento) => {
+  let inputSinDato = false;
+  if (Array.isArray(elemento)) {
+    inputSinDato = elemento.some((objeto) => {
+      return Object.values(objeto).some((value) => value == "");
+    });
+  } else {
+    inputSinDato = Object.values(elemento).some(value => value == '');
+  }
+  return inputSinDato;
+}
+
+/**
+ * 
+ * @param {Array} array array al que deseo modificar un objeto 
+ * @param {Array} nuevoValores array con objetos que deseo reemplazar en array
+ * @param {String} variableLS key para guardar en local storage
+ * @param {Array} ordenArray array con las claves para ordenar el array
+ * @returns {Array} se rertorna el array modificado
+ */
+export const modificarArrayLS = (array, nuevoValores, variableLS, ordenArray) => {
+  let nuevoArray = buscarYReemplazarID(array, nuevoValores);
+  ordenarArray(array , ordenArray);
+  localStorage.setItem(variableLS, JSON.stringify(array));
+  
+  return nuevoArray
+}
 
 //! ********** FUNCIONES PARA MODIFICAR EL DOM ************
 
@@ -347,6 +390,12 @@ export const creacionInput = (key) => {
       input.type = "email";
       break;
 
+    case "imagen":
+      input.type="file";
+      input.accept="image/*";
+      input.multiple = "true";
+      break;
+
     default:
       input.type = "text";
   }
@@ -372,6 +421,61 @@ export const crearSelect = (arrayOption, idSelect, formDataName) => {
     select.appendChild(option);
   });
   return select;
+};
+
+/**
+ * creo un select de los modelos segun la marca seleccionada
+ * @param {id} idArrayPrimario id del select que posee el select primario (el secundario dara opciones segun lo que se seleccione del primero)
+ * @param {Array} arraysecundario array con las opciones que se mostaran en select secundario.
+ * ejemplo de arraySecundario = [
+ * {
+ *  marca: Fender, --> Dato del select primario
+ *  modelo: Jazz Bass 
+ * },
+ * {
+ *  marca: Fender, --> Dato del select primario
+ *  modelo: Presicion 
+ * },
+ * {
+ *  marca: Spector, --> Dato del select primario
+ *  modelo: NS2
+ * },
+ * ]
+ * @param {Array} clavesFiltrar array con las claves que se desea filtrar el select primario y el secundario. Por ejemplo ['marcas', 'modelo'] 
+ * @param {string} id id del HTML en donde se inserta el select
+ * @param {string} idSelectSecundario id que se le dara al select secundario
+ * @param {string} formDataNombre atributo name del select secundario para extraer datos en FormData
+ * @param {select} return retorna la funcion crearSelect que crea un select con los datos ingresados
+ */
+export const crearSelectAnidado = (idSelectPrimario, arraySecundario, clavesFiltrar, idSelectSecundario, formDataNombre) => {
+  // guardo en una variable el id del select primario el cual leera el segundo select para mostrar las opciones
+  const selectPrimario = document.getElementById(idSelectPrimario);
+  // guardo el valor del primer select
+  const selectPrimarioValor = selectPrimario.value;
+  /* guardo en una variable los valores encontrados en el array secundario cuyas claves coinciden que poseen los valores seleccionados en el select primario
+  por ejemplo si el select primario selecciono la marca: Fender. En el array selectSecundarioFiltrado guardare todos los
+  objetos cuya clave marca sea fender*/
+  const selectSecundarioFiltrado = arraySecundario.filter((objeto) => objeto[clavesFiltrar[0]] == selectPrimarioValor);
+  /* guardo en un array los valores de las claves correspondientes al select secundario. del array selectSecundarioFiltrado obtengo los valores
+  de la clave detallada en la posicion 1 del array clavesFiltrar */
+  const arrayModelosFiltrados = selectSecundarioFiltrado.map((objeto) => objeto[clavesFiltrar[1]]);
+  
+  // elimino el select si esta creado para que cuando haya un cambio en la marca se cree uno nuevo
+  let selectSecundario = document.getElementById(idSelectSecundario)
+  // const selectSecundario = document.getElementById(idSelectSecundario);
+
+  if (!selectSecundario) {
+      selectSecundario = crearSelect(arrayModelosFiltrados, idSelectSecundario, formDataNombre);
+  } else {
+      selectSecundario.innerHTML = "";
+      arrayModelosFiltrados.forEach((element) => {
+          const option = document.createElement("option");
+          option.value = element;
+          option.textContent = element;
+          selectSecundario.appendChild(option);
+      });
+  }
+  return selectSecundario;
 };
 
 /**
@@ -409,263 +513,4 @@ export const crearModalConfirmacion = (text, id) => {
   modalVentana.appendChild(modalButton);
   modal.appendChild(modalVentana);
   modalContainer.appendChild(modal);
-};
-
-
-// variable globales para la funcion //! modificarDatosTablas
-// aux para saber si el boton fue presionado
-let eliminarBtn = false;
-// guardo todas las filas a las que corresponde el boton presionado
-let trModificado = [];
-// guardo en un array los id de los usuarios a eliminar
-let auxKeyEliminar = [];
-
-/**
- * 
- * @param {Event} e evento click sobre la tabla que deseo modificar celdas 
- * @param {*} idTabla id de la tabla que posee en el HTML
- * @param {*} array donde se almacenan los datos mostradoss en la tabla
- * @param {*} variableLS clave para almacenar los datos en el LS para la variable arrray
- * @param {*} arrayClavesNoRepetir  array con las claves que se deben validar para modificar un elemento
- * @param {*} ordenArray array con las claves en orden de como se desea ordena la tabla 
- */
-export const modificarDatosTablas = (e, idTabla, array, variableLS, arrayClavesNoRepetir, ordenArray) => {
-
-  // guardo en una variable la tabla sobre la que hare modificaciones
-  const tabla = document.getElementById(idTabla);
-  
-  // creo la variable pAlert para ver si ya fue creado en el DOM
-  const pAlert = document.getElementById(`${idTabla}MsjAlert`)
-  
-  // si pAlert no existe en el DOM entonces creo a <p></p>
-  if (!pAlert) {
-    // creacion de etique <p></p> para creacion de mensaje de alerta relacionada a la tabla
-    const p = document.createElement("p");
-    p.classList.add("msjAlerta", "oculto");
-    p.id = `${idTabla}MsjAlert`;
-    tabla.appendChild(p);
-  }
-
-  // variable locales
-  // variable aux para saber si presione un boton de eliminar o modificar para borrar el que no corresponde
-  // se almacenan en sesion storage dado que en cada click la variable se inicializa
-  // let eliminarBtn = JSON.parse(sessionStorage.getItem('eliminarBtn')) || false; 
-  // let eliminarBtn = false;
-  
-  // variable para guardar las filas correspondientes al botones presionado
-  // se almacenan en sesion storage dado que en cada click la variable se inicializa
-  // let trModificado = JSON.parse(sessionStorage.getItem('trModificado')) || [];
-  // let trModificado = [];
-
-  // guardo en una variable los encabezados <th></th> que son las claves de los objetos
-  const th = tabla.querySelectorAll("th");
-  // guardo en un array las claves
-  const key = Array.from(th).map((key) => key.textContent.toLocaleLowerCase());
-
-  // guardo en una variable en donde hice click
-  const btnClick = e.target;
-
-  // verifico si hice click en un boton
-  if (btnClick.tagName == "BUTTON") {
-
-    //* modificacion de usuarios
-    // verifico si el boton presionado es modificar
-    if (btnClick.getAttribute("data-id") == "modificar") {
-      // muestro y oculto los botones para el caso modificar
-      const btn = document.getElementById(`${idTabla}AceptarBtn`);
-      const a = `${idTabla}AceptarBtn`
-      document.getElementById(`${idTabla}AceptarBtn`).classList.remove('oculto')
-      document.getElementById(`${idTabla}DescartarBtn`).classList.remove('oculto')
-      btnClick.classList.add("oculto");
-
-      if (!eliminarBtn) {
-        eliminarColumna(idTabla , encontrarCelda(idTabla , "eliminar"));
-        eliminarBtn = true;
-        // sessionStorage.setItem('eliminarBtn',JSON.stringify(eliminarBtn))
-      }
-
-      // guardo en una variable la fila correspondiente al boton presionado
-      const tr = btnClick.closest("tr");
-      trModificado.push(tr);
-      sessionStorage.setItem('trModificado',JSON.stringify(trModificado))
-
-      // agrego la clase modificado a la fila correspondiente al boton seleccionado
-      tr.classList.add("modificando");
-
-      // guardo los td correspondiente a la fila
-      const tdNodeList = tr.querySelectorAll("td");
-      // por cada celda agrego un input segun el tipo de dato
-      tdNodeList.forEach((td, index) => {
-        const value = td.textContent;
-        switch (key[index]) {
-          case "id":
-          case undefined:
-            break;
-          case "password":
-            td.textContent = "";
-            const inputPass = creacionInput(key[index]);
-            td.appendChild(inputPass);
-            inputPass.value = value;
-            break;
-          case "fechanacimiento":
-            td.textContent = "";
-            const inputDate = creacionInput(key[index]);
-            td.appendChild(inputDate);
-            inputDate.value = value;
-            break;
-          case "email":
-            td.textContent = "";
-            const inputEmail = creacionInput(key[index]);
-            td.appendChild(inputEmail);
-            inputEmail.value = value;
-            break;
-          case "admin":
-            td.textContent = "";
-            const selectAdmin = crearSelect(["true", "false"]);
-            td.appendChild(selectAdmin);
-            selectAdmin.value = value;
-            break;
-          default:
-            td.textContent = "";
-            const inputText = creacionInput(key[index]);
-            td.appendChild(inputText);
-            inputText.value = value;
-            break;
-        }
-      });
-
-      console.log(trModificado);
-      console.log(eliminarBtn);
-
-
-      //* aceptar cambios realizados
-      document.getElementById(`${idTabla}AceptarBtn`).onclick = () => {
-        // array con los nuevos datos de los usuarios que fueron modificados
-        const arrayNuevosDatos = [];
-
-        // itero sobre cada fila del NodeList de filas
-        trModificado.forEach((tr) => {
-          // por cada fila obtengo el NodeList de las celdas
-          const tdNodeList = tr.querySelectorAll("td");
-          // objeto para guardar los datos del usuario modificado
-          const objetoModificado = {};
-          // por cada celda obtengo el valor
-          tdNodeList.forEach((td, index) => {
-            switch (key[index]) {
-              case undefined:
-                break;
-              case "id":
-                objetoModificado[key[index]] = td.textContent;
-                break;
-              default:
-                objetoModificado[key[index]] = td.firstChild.value;
-                break;
-            }
-          });
-          arrayNuevosDatos.push(objetoModificado);
-        });
-
-        // verifico que todos los datos esten completos
-        const datoVacio = arrayNuevosDatos.some((objeto) => {
-          return Object.values(objeto).some((value) => value == "");
-        });
-
-        if (datoVacio) {
-          crearAlerta("Todos los datos son OBLIGATORIOS", `${idTabla}MsjAlert`);
-        } else {
-          // verifico que los datos nuevos ingresados no esten repetidos con otros usuarios
-          const { objetosRepetidos, clavesRepetidas } = buscarDatosRepetidos(arrayNuevosDatos, array, arrayClavesNoRepetir);
-          // si objetoRepetiidos esta vacio los datos son validos
-          if (objetosRepetidos.length != 0) {
-            crearAlerta(`El ${clavesRepetidas[0][0].toUpperCase()}: ${objetosRepetidos[0][clavesRepetidas[0]]} ya se encuentra registrado`,`${idTabla}MsjAlert`);
-          } else {
-            // verifico los datos modificado no esten repetidos entre ellos.
-            const { objetosRepetidos: objIngresadoRepetidos, clavesRepetidas: clavesValoresRepetidos  } = buscarDatosRepetidos(arrayNuevosDatos, arrayNuevosDatos, arrayClavesNoRepetir);
-            if (objIngresadoRepetidos.length != 0) {
-              crearAlerta(`El ${clavesValoresRepetidos[0][0].toUpperCase()}: ${objIngresadoRepetidos[0][clavesValoresRepetidos[0]]} fue utilizado en varias modificaciones`,`${idTabla}MsjAlert`);
-            } else {
-              // modifico el array. Busco los objetos en array y los reemplazo con los nuevos valores
-              array = buscarYReemplazarID(array, arrayNuevosDatos);
-              // ordeno el array
-              ordenarArray(array, ordenArray);
-              // guardo en Local Storage
-              localStorage.setItem(variableLS, JSON.stringify(array));
-              // oculto los botones
-              document.getElementById(`${idTabla}AceptarBtn`).classList.add('oculto')
-              document.getElementById(`${idTabla}DescartarBtn`).classList.add('oculto')
-              // actualizo la tabla con los nuevos valores
-              tablaHorizontal(array, idTabla);
-              // vuelvo a inicializar las variables
-              trModificado = [];
-              eliminarBtn = false;
-              // sessionStorage.clear();
-            }
-          }
-        }
-      };
-    }
-
-    if (btnClick.getAttribute("data-id") == "eliminar") {
-      // muestro los botones correspondientes a eliminar
-      document.getElementById(`${idTabla}EliminarBtn`).classList.remove('oculto')
-      document.getElementById(`${idTabla}DescartarBtn`).classList.remove('oculto')
-      btnClick.classList.add("oculto");
-
-      // si presione eliminar, borro todos los botones de mnodificar de la tabla
-      if (!eliminarBtn) {
-        eliminarColumna(idTabla, encontrarCelda(idTabla, "modificar"));
-        eliminarBtn = true;
-      }
-
-      // guardo en una variable la fila correspondiente al boton presionado
-      const tr = btnClick.closest("tr");
-
-      // agrego la clase modificado a la fila correspondiente al boton seleccionado
-      tr.classList.add("eliminando");
-
-      // itero sobre el NodeList para obtener los ids de los usuarios que deseo elimninar
-      const tdNodeListEliminar = tr.querySelectorAll("td");
-      tdNodeListEliminar.forEach((td, index) => {
-        key[index] == "id" && auxKeyEliminar.push(td.textContent);
-      });
-
-      // confirmacion que se desea eliminar el usuario y creacion de modal
-      document.getElementById(`${idTabla}EliminarBtn`).onclick = () => {
-        // creo un modal para la confirmacion
-        const divModal = document.createElement('div');
-        divModal.id = `${idTabla}Modal`;
-        tabla.appendChild(divModal);
-        crearModalConfirmacion("¿Esta seguro que desea ELIMINAR los USUARIOS seleccionados? SITUACION IRREVERSIBLE", `${idTabla}Modal`);
-        // confirmacion en modal de aceptar borrar usuarios
-        document.getElementById(`${idTabla}ModalConfirmar`).onclick = () => {
-          array = eliminarElementoArray(array, auxKeyEliminar);
-          ordenarArray(array, ordenArray);
-          localStorage.setItem(variableLS, JSON.stringify(array));
-          divModal.remove();
-          tablaHorizontal(array, idTabla);
-          document.getElementById(`${idTabla}EliminarBtn`).classList.add('oculto')
-          document.getElementById(`${idTabla}DescartarBtn`).classList.add('oculto')
-          eliminarBtn = false;
-          auxKeyEliminar = [];
-          // sessionStorage.clear();
-        };
-        // cancelo la baja en modal
-        document.getElementById(`${idTabla}ModalCancelar`).onclick = () => {
-          divModal.remove();
-        };
-      };
-    }
-
-    // decarto cualquier cambio realizado (modificacion o eliminar)
-    document.getElementById(`${idTabla}DescartarBtn`).onclick = () => {
-      document.getElementById(`${idTabla}EliminarBtn`).classList.add("oculto");
-      document.getElementById(`${idTabla}AceptarBtn`).classList.add('oculto')
-      document.getElementById(`${idTabla}DescartarBtn`).classList.add('oculto')
-      tablaHorizontal(array, idTabla);
-      eliminarBtn = false;
-      auxKeyEliminar = [];
-      trModificado = [];
-      // sessionStorage.clear();
-    };
-  }
 };
