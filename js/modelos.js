@@ -82,7 +82,7 @@ formulario.onsubmit = (e) => {
     }   
 } 
 
-// modificacion o eliminacion de marcas. guardado en local storage
+// modificacion o eliminacion de modelos. guardado en local storage
 document.getElementById('tablaModelos').onclick = (e) => {
 
     modificarDatosTablas (e, 'tablaModelos', modelos, 'modelos', noRepetirModelo, ordenarModelo)

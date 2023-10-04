@@ -51,29 +51,8 @@ export const buscarKeyValue = (array, elemento, claves) => {
         return elemento[key].toLowerCase() == objArray[key].toLowerCase();
       }
     })
-    // // verifico si es un array
-    // if (Array.isArray(elemento)) {
-    //   return cla
-    //   // si no es un array es un objeto
-    // } else {
-    //   return claves.every((key) => elemento[key].toLowerCase() == objArray[key].toLowerCase());
-    // }
   });
-
   return index;
-
-  // // si element es un objeto
-  // if (Array.isArray(elemento)) {
-  //   const index = array.findIndex(() => {
-  //     console.log('continuar construyendo');
-  //   })
-  //   // si da false entonces es un objeto
-  // } else {
-  //   const index = array.findIndex((objArray) => {
-  //     return claves.every(key => elemento[key] == objArray[key])
-  //   })
-  // }
-  // return index
 };
 
 /**
@@ -114,8 +93,6 @@ export const buscarDatosRepetidos = (elemento, array, claves) => {
   }
 }
 
-
-//TODO REVIISAR SI SE PUEDE DEJAR DE USAR. REEMPLAZA buscarDatosRepetidos
 /**
  * funcion que busca un elemento en un array para determinar si para una clave dada (en el array claves) existe
  * objeto en array que poseea el mismo valor. Por ejemplo si cargo un usuario con el cel 123456, busco si hay algun otro
@@ -204,23 +181,6 @@ export const buscarYReemplazarID = (arrayActual, elemento) => {
 export const eliminarElementoArray = (array, arrayId) => {
   return array.filter((objArray) => !arrayId.some((key) => key == objArray.id));
 };
-
-// /**
-//  * RETORNA UN ARRAY: BUSCA UN ELEMENTO EN UN ARRAY POR ID Y LO ELIMINA SI LO ENCUENTRA
-//  * @param {Array} array ARRAY DEL CUAL QUIERES ELIMINAR EL ELEMENTO
-//  * @param {Object | Array} elemento OBJETO O ARRAY QUE DESEAS ELIMINAR DEL ARRAY
-//  * @returns {Array} EL ARRAY SIN EL ELEMENTO
-//  */
-// export const eliminarElementoArray = (array, elemento) => {
-//   // Verifica si elemento es un array
-//   if (Array.isArray(elemento)) {
-//     // Filtra el array para mantener solo los elementos que no están en elemento
-//     return array.filter(objArray => !elemento.some(objElemento => objElemento.id === objArray.id));
-//   } else {
-//     // Si no es un array elemento es un objeto. Busco por ID en el array para eliminarlo
-//     return array.filter(objeto => objeto.id !== elemento.id);
-//   }
-// }
 
 /**
  * busco si algun objeto que este dentro de un array posea un value = ''
@@ -398,6 +358,7 @@ export const creacionInput = (key) => {
 
     default:
       input.type = "text";
+      break;
   }
   return input;
 };

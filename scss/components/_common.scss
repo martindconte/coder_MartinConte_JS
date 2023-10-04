@@ -22,6 +22,22 @@
     }
 }
 
+.btn-comprar {
+    @extend %font-form-s;
+    padding: 5px 10px;
+    background-color: #118d2c;
+    color: white;
+    border: none;
+    border-radius: .25rem;
+    transition: background-color 1s ease, color 1s ease ;
+    margin-top: 10px;
+    &:hover {
+        background-color: #165269;
+        color: black;
+        border: none;
+    }
+}
+
 %btnTableV {
     @extend %font-primary-s;
     padding: 5px;

@@ -131,13 +131,13 @@ textarea {
 /* ------- COMPONENTS ------- */
 /* ------------- FONTS ------------ */
 /* ---------- TIPOGRAFIA ---------- */
-.btnTableV__eliminar, .btnTableV__modificar, .btnTableV__agregar {
+.tablaUsuariosAdmin table td, .btnTableV__eliminar, .btnTableV__modificar, .btnTableV__agregar {
   font-family: "Oswald";
   font-size: 18px;
   font-weight: 400;
 }
 
-.modal p, .modal, .modal__btnCancelar, .modal__btnConfirmar, .msjAlerta {
+.tablaUsuariosAdmin, .modal p, .modal, .modal__btnCancelar, .modal__btnConfirmar, .msjAlerta {
   font-family: "Oswald";
   font-size: 20px;
   font-weight: 500;
@@ -185,10 +185,16 @@ h2, .login h2, .bienvenida {
   font-weight: 800;
 }
 
-.eliminando td, .modificando td {
+.tarjetas .descripcion, .eliminando td, .modificando td {
   font-family: "Barlow Condensed";
   font-size: 20px;
   font-weight: 500;
+}
+
+.tarjetas .precio, .tarjetas .titulo {
+  font-family: "Barlow Condensed";
+  font-size: 30px;
+  font-weight: 800;
 }
 
 .usuarios form input,
@@ -198,7 +204,7 @@ h2, .login h2, .bienvenida {
   font-weight: 300;
 }
 
-.usuarios form, .login form button, .login form input, .login form label, .btn-aceptar {
+.usuarios form, .login form button, .login form input, .login form label, .btn-comprar, .btn-aceptar {
   font-family: "Prompt";
   font-size: 18px;
   font-weight: 400;
@@ -221,6 +227,21 @@ h2, .login h2, .bienvenida {
 .btn-aceptar:hover {
   background-color: #006d00;
   color: #FFF;
+  border: none;
+}
+
+.btn-comprar {
+  padding: 5px 10px;
+  background-color: #118d2c;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  transition: background-color 1s ease, color 1s ease;
+  margin-top: 10px;
+}
+.btn-comprar:hover {
+  background-color: #165269;
+  color: black;
   border: none;
 }
 
@@ -469,6 +490,28 @@ h2, .login h2, .bienvenida {
   background-color: #006d00;
   color: #FFF;
   border: none;
+}
+
+.tablaUsuariosAdmin {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 20px;
+  gap: 15px;
+}
+.tablaUsuariosAdmin table {
+  border-collapse: collapse;
+  border: 4px solid black;
+}
+.tablaUsuariosAdmin table th {
+  padding: 10px;
+  gap: 10px;
+  border: 2px solid black;
+}
+.tablaUsuariosAdmin table td {
+  padding: 10px;
+  border: 1px solid black;
+  text-align: center;
+  font-weight: 300;
 }
 
 /* --------- PAGE USUARIOS -------- */
@@ -787,6 +830,35 @@ h2 {
 }
 .productos__container table tr td select:focus {
   outline: none;
+}
+
+.mainArticulos {
+  margin-top: 120px;
+  background-color: #c1ffab;
+}
+
+.articulos__tarjetas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tarjetas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px 20px;
+  margin: 10px;
+  width: 20vw;
+  gap: 10px;
+  background-color: #9ee99e;
+}
+.tarjetas .precio {
+  font-weight: 800;
 }
 
 /*# sourceMappingURL=styles.css.map */

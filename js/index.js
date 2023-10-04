@@ -40,7 +40,7 @@ const userAdmin = [
 
 const contenidoIndex = () => {
     document.getElementById('headerLoguin').remove();
-    // document.getElementById('headerNavBar').classList.remove('oculto');
+    document.getElementById('tablaAdmin').remove()
     const main = document.querySelector('main');
     const pIntro = document.createElement('p');
     pIntro.innerText = 'Bienvenido a GFCMusic - Administrador de Instrumentos Musicales';

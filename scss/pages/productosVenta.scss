@@ -1,0 +1,36 @@
+.mainArticulos {
+    margin-top: 120px;
+    background-color: #c1ffab;
+}
+
+.articulos {
+    &__tarjetas {
+        @include row;
+        align-items: stretch;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+.tarjetas {
+    @include column;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 10px;
+    width: 20vw;
+    gap: 10px;
+    // height: 500px;
+    background-color: #9ee99e;
+    // border: 2px solid black;
+    .titulo {
+        @extend %font-tertiary-xl;
+    }
+    .descripcion {
+        @extend %font-tertiary-m;
+    }
+    .precio {
+        @extend %font-tertiary-xl;
+        font-weight: 800;
+    }
+}
