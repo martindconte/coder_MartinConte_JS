@@ -11,4 +11,3 @@ if (usuarioLogeado != null) {
         document.getElementById('headerUsuarioAdmin').remove();
     }
 }
-console.log(usuarioLogeado)

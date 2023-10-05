@@ -17,17 +17,18 @@ import {
 
 
 // variables guardadas en local storage
+// guardo en una variable las marcas almacenados en local storage
+const marcasLS = JSON.parse(localStorage.getItem("marcas"));
+// creo un array con las marcas registradas para usar en los selects
+const marcasRegistradas = marcasLS ? marcasLS.map(marca => marca.marca) : [];
 // guardo en una variable los modelos almacenados en local storage
 const modelosLS = JSON.parse(localStorage.getItem("modelos"));
 // guardo en una variable las marcas que poseen modelos registrados
 const auxMarcas = modelosLS ? modelosLS.map((elemento) => elemento.marca) : [];
-// verifco que haya datos guardados en local storage. Si no los hay es una rray vacio
+// verifco que haya datos guardados en local storage. Si no los hay es una array vacio
 const modelosRegistrados = modelosLS ? modelosLS : [];
 // del array modelosRegistrados filtro las marcas y guardo cada una valor una vez (modelosRegistrados puede contener varias veces la misma marca)
-const marcasRegistradas = [...new Set(auxMarcas)]
-
-// const arrayMarcas = marcasCargadas
-// console.log(arrayMarcas);
+const marcaModelo = [...new Set(auxMarcas)]
 
 // variable globales para la funcion //! modificarDatosTablas
 // aux para saber si el boton fue presionado
@@ -41,7 +42,7 @@ let auxKeyEliminar = [];
  *
  * @param {Event} e evento click sobre la tabla que deseo modificar celdas
  * @param {string} idTabla id de la tabla que posee en el HTML
- * @param {Array} array donde se almacenan los datos mostradoss en la tabla
+ * @param {Array} array donde se almacenan los datos mostrados en la tabla
  * @param {string} variableLS clave para almacenar los datos en el LS para la variable arrray
  * @param {Array} arrayClavesNoRepetir  array con las claves que se deben validar para modificar un elemento
  * @param {Array} ordenArray array con las claves en orden de como se desea ordena la tabla
@@ -90,13 +91,11 @@ export const modificarDatosTablas = (
       if (!eliminarBtn) {
         eliminarColumna(idTabla, encontrarCelda(idTabla, "eliminar"));
         eliminarBtn = true;
-        // sessionStorage.setItem('eliminarBtn',JSON.stringify(eliminarBtn))
       }
 
       // guardo en una variable la fila correspondiente al boton presionado
       const tr = btnClick.closest("tr");
       trModificado.push(tr);
-      sessionStorage.setItem("trModificado", JSON.stringify(trModificado));
 
       // agrego la clase modificado a la fila correspondiente al boton seleccionado
       tr.classList.add("modificando");
@@ -121,16 +120,21 @@ export const modificarDatosTablas = (
             selectAdmin.value = value;
             break;
           case "marca":
+            td.textContent = "";
             switch (variableLS) {
-              case "productos":
               case "modelos":
-                td.textContent = "";
-                const selectMarcas = crearSelect(marcasRegistradas, `${id}Primario`);
+                const selectMarca = crearSelect(marcasRegistradas, `${id}Primario`);
+                td.appendChild(selectMarca)
+                selectMarca.value = value;
+                break;
+              case "productos":
+                // td.textContent = "";
+                const selectMarcas = crearSelect(marcaModelo, `${id}Primario`);
                 td.appendChild(selectMarcas);
                 selectMarcas.value = value;
                 break;
               default:
-                td.textContent = "";
+                // td.textContent = "";
                 const inputText = creacionInput(key[index]);
                 td.appendChild(inputText);
                 inputText.value = value;
@@ -267,6 +271,7 @@ export const modificarDatosTablas = (
                         // vuelvo a inicializar las variables
                         trModificado = [];
                         eliminarBtn = false;
+                        location.reload();
                         break;
                     }
                     break;
@@ -298,6 +303,7 @@ export const modificarDatosTablas = (
                         // vuelvo a inicializar las variables
                         trModificado = [];
                         eliminarBtn = false;
+                        location.reload();
                         break;
                     }
                     break;
@@ -336,7 +342,7 @@ export const modificarDatosTablas = (
         key[index] == "id" && auxKeyEliminar.push(td.textContent);
       });
 
-      // confirmacion que se desea eliminar el usuario y creacion de modal
+      // confirmacion que se desea eliminar el elemento y creacion de modal
       document.getElementById(`${idTabla}EliminarBtn`).onclick = () => {
         // creo un modal para la confirmacion
         const divModal = document.createElement("div");
@@ -346,7 +352,7 @@ export const modificarDatosTablas = (
           "¿Esta seguro que desea ELIMINAR los datos seleccionados? SITUACION IRREVERSIBLE",
           `${idTabla}Modal`
         );
-        // confirmacion en modal de aceptar borrar usuarios
+        // confirmacion en modal de aceptar borrar
         document.getElementById(`${idTabla}ModalConfirmar`).onclick = () => {
           array = eliminarElementoArray(array, auxKeyEliminar);
           ordenarArray(array, ordenArray);
@@ -357,14 +363,14 @@ export const modificarDatosTablas = (
           document.getElementById(`${idTabla}DescartarBtn`).classList.add("oculto");
           eliminarBtn = false;
           auxKeyEliminar = [];
-          // sessionStorage.clear();
+          location.reload();
         };
         // cancelo la baja en modal
         document.getElementById(`${idTabla}ModalCancelar`).onclick = () => {
           divModal.remove();
         };
       };
-    }
+    };
 
     // decarto cualquier cambio realizado (modificacion o eliminar)
     document.getElementById(`${idTabla}DescartarBtn`).onclick = () => {
