@@ -74,14 +74,14 @@ export const buscarDatosRepetidos = (elemento, array, claves) => {
   elemento.forEach(objNuevo => {
     const coincidencias = array.filter(objUsuario => {
       if (objNuevo.id != objUsuario.id) {
-          return claves.some(clave => objNuevo[clave] === objUsuario[clave]);
+          return claves.some(clave => objNuevo[clave].toLowerCase().trim() === objUsuario[clave].toLowerCase().trim());
       }
     });
 
     if (coincidencias.length > 0) {
       objetosRepetidos.push(objNuevo);
       const clavesRepetidasPorObjeto = claves.filter(clave => {
-        return coincidencias.some(objUsuario => objUsuario[clave] === objNuevo[clave]);
+        return coincidencias.some(objUsuario => objUsuario[clave].toLowerCase().trim() === objNuevo[clave].toLowerCase().trim());
       });
       clavesRepetidas.push(clavesRepetidasPorObjeto);
     }

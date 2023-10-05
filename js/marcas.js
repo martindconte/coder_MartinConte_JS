@@ -43,11 +43,9 @@ document.getElementById('marcasRegistar').onclick = () => {
 
     // guardo en el objeto marcaIngresada el valor ingresado
     marcaIngresada['marca'] = document.getElementById('marcaIngresada').value.trim();
-    console.log(marcaIngresada);
 
     // verifico que la marca ingresada no se encuentre ya cargada
     const marcaRepetida = buscarKeyValue(marcas, marcaIngresada, ['marca']);
-    console.log((marcaRepetida));
 
     if (marcaIngresada.marca == '') {
         crearAlerta('Debe ingresar una Marca', 'msjAlertaMarca');

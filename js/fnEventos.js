@@ -106,7 +106,7 @@ export const modificarDatosTablas = (
       let id = '';
       // por cada celda agrego un input segun el tipo de dato
       tdNodeList.forEach((td, index) => {
-        const value = td.textContent;
+        const value = td.textContent.trim();
         switch (key[index]) {
           case "id":
             id = td.textContent;
@@ -207,7 +207,7 @@ export const modificarDatosTablas = (
                 // objetoModificado[key[index]] = imgFile[0].name;
                 break;
               default:
-                objetoModificado[key[index]] = td.firstChild.value;
+                objetoModificado[key[index]] = td.firstChild.value.trim();
                 break;
             }
           });
@@ -250,7 +250,7 @@ export const modificarDatosTablas = (
                 const { objetosRepetidos, clavesRepetidas } = buscarDatosRepetidos(arrayNuevosDatos, array, arrayClavesNoRepetir);
                 switch (objetosRepetidos.length != 0) {
                   case true:
-                    crearAlerta(`El ${clavesRepetidas[0][0].toUpperCase()}: ${objetosRepetidos[0][clavesRepetidas[0]]} ya se encuentra registrado`, `${idTabla}MsjAlert`);
+                    crearAlerta(`El ${clavesRepetidas[0][0].toUpperCase()}: ${objetosRepetidos[0][clavesRepetidas[0]].toUpperCase()} ya se encuentra registrado`, `${idTabla}MsjAlert`);
                     break;
                   case false:
                     // verifico que los datos no esten repetidos entre los objetos repetidos (por ejemplo no se carguen dos telefonos iguales entre las celdas modificadas)

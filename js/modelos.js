@@ -59,7 +59,7 @@ formulario.onsubmit = (e) => {
 
     // obtengo los datos que se ingresaron en el formulario
     const formModelo = new FormData(formulario);
-    formModelo.forEach((value, key) => nuevoModelo[key] = value);
+    formModelo.forEach((value, key) => nuevoModelo[key] = value.trim());
 
     // verifico que no haya datos vacios
     const DatoVacio = Object.values(nuevoModelo).some(value => value == '');
