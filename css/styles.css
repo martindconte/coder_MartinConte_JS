@@ -143,7 +143,7 @@ textarea {
   font-weight: 500;
 }
 
-.login__titulo {
+.cotizacion__datos article .precio, .login__titulo {
   font-family: "Oswald";
   font-size: 25px;
   font-weight: 600;
@@ -167,7 +167,7 @@ h2, .login h2, .bienvenida {
   font-weight: 400;
 }
 
-.header__login, .header__nav {
+.cotizacion__datos article .btnDescartar, .cotizacion__datos article .btnComprar, .cotizacion p, .header__login, .header__nav {
   font-family: "Rajdhani";
   font-size: 20px;
   font-weight: 500;
@@ -185,13 +185,19 @@ h2, .login h2, .bienvenida {
   font-weight: 800;
 }
 
-.tarjetas .descripcion, .eliminando td, .modificando td {
+.cotizacion__select input, .cotizacion__select select {
+  font-family: "Barlow Condensed";
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.cotizacion__datos article .stock, .cotizacion__datos article .descripcion, .cotizacion__select, .tarjetas .descripcion, .eliminando td, .modificando td {
   font-family: "Barlow Condensed";
   font-size: 20px;
   font-weight: 500;
 }
 
-.tarjetas .precio, .tarjetas .titulo {
+.cotizacion__datos article h3, .tarjetas .precio, .tarjetas .titulo {
   font-family: "Barlow Condensed";
   font-size: 30px;
   font-weight: 800;
@@ -859,6 +865,103 @@ h2 {
 }
 .tarjetas .precio {
   font-weight: 800;
+}
+
+/* -- PAGE COMPRA DE UN PRODUCTO -- */
+.mainCompra {
+  margin-top: 120px;
+}
+
+.cotizacion {
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #feffc8;
+  border-radius: 16px;
+  max-width: 75vw;
+}
+.cotizacion p {
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+}
+.cotizacion__producto {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 200px 0.6fr 0.4fr;
+  column-gap: 10px;
+}
+.cotizacion__moneda {
+  background-color: #f1ff71;
+  padding: 10px;
+  border-radius: 8px;
+}
+.cotizacion__select {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+.cotizacion__select label {
+  display: block;
+  width: 100%;
+}
+.cotizacion__select select {
+  padding: 2px;
+  border: none;
+  background-color: hsla(0, 100%, 49%, 0.2);
+  width: 150px;
+}
+.cotizacion__select input {
+  padding: 2px;
+  width: 100px;
+  border: none;
+  background-color: hsla(0, 100%, 49%, 0.2);
+  width: 150px;
+}
+.cotizacion__select input:focus {
+  outline: none;
+}
+.cotizacion__datos article {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.cotizacion__datos article .precio {
+  font-weight: 500;
+}
+.cotizacion__datos article .btnComprar {
+  font-weight: 600;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #00ff62;
+  transition: background-color 1s ease, color 1s ease;
+  width: 50%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.cotizacion__datos article .btnComprar:hover {
+  background-color: #165f00;
+  color: white;
+}
+.cotizacion__datos article .btnDescartar {
+  font-weight: 600;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #ff5858;
+  transition: background-color 1s ease, color 1s ease;
+  cursor: pointer;
+  width: 50%;
+  margin: 0 auto;
+}
+.cotizacion__datos article .btnDescartar:hover {
+  background-color: #830000;
+  color: white;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -38,19 +38,19 @@ export const crearAlerta = (text, id) => {
  */
 export const buscarKeyValue = (array, elemento, claves) => {
   const index = array.findIndex((objArray) => {
-    return claves.every(key => {
-      // verifico si elemento es un array
-      if (Array.isArray(elemento)) {
-        return elemento.some(objeto => {
-          if (objeto.id != objArray.id) {
-            return objeto[key].toLowerCase() == objArray[key].toLowerCase();
-          }
-        })
-      // si no es un array lo conidero un objeto
-      } else {
+    if (Array.isArray(elemento)) {
+      return elemento.some(objeto => {
+        if (objeto.id != objArray.id) {
+          return claves.every((key) => {
+            objeto[key].toLowerCase() == objArray[key].toLowerCase();
+          })
+        }
+      })
+    } else {
+      return claves.every(key => {
         return elemento[key].toLowerCase() == objArray[key].toLowerCase();
-      }
-    })
+      })
+    }
   });
   return index;
 };
@@ -127,7 +127,7 @@ export const valoresRepetidos = (array, elemento, claves) => {
 export function ordenarArray(array, arrayKey) {
   return array.sort((a, b) => {
     for (let propiedad of arrayKey) {
-      if (a[propiedad] !== b[propiedad]) {
+      if (a[propiedad] != b[propiedad]) {
         return a[propiedad].localeCompare(b[propiedad]);
       }
     }

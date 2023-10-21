@@ -62,7 +62,5 @@ document.getElementById('marcasRegistar').onclick = () => {
 
 // modificacion o eliminacion de marcas. guardado en local storage
 document.getElementById('tablaMarcas').onclick = (e) => {
-
     modificarDatosTablas (e, 'tablaMarcas', marcas, 'marcas', clavesNoRepetir, ordenarMarca)
-
 }

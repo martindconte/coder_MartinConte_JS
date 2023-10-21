@@ -28,7 +28,7 @@ class Producto {
 
 //! variable globales
 // array para ordenar al array productos
-const ordenarProductos = ['marca', 'modelos', 'tipo', 'origen', 'precio'];
+const ordenarProductos = ['marca', 'modelos', 'tipo', 'origen'];
 /* array con las claves que no se pueden repetir en simultaneo
 (no puede existir un producto que tenga los mismos valores para esas claves) */
 const noRepetirProducto = ['marca', 'modelo', 'tipo', 'origen'];
@@ -47,7 +47,6 @@ const modelosCargados = modelosLS ? modelosLS.map(objeto => objeto.modelo) : [];
 const auxMarca = modelosLS ? modelosLS.map(objeto => objeto.marca) : [];
 // array con las marcas que tienen modelos registrados sin repetir
 const marcasRegistradas = [...new Set(auxMarca)]
-console.log(modelosCargados);
 tablaHorizontal(productos, 'tablaProductos');
 
 //! elementos del DOM
@@ -62,9 +61,6 @@ const selectModelos = crearSelectAnidado('selectMarcas', modelosLS, ['marca', 'm
 // formProducto.appendChild(selectModelos)
 // coloco el select modelos como segundo elemento del formulario (a continuacion del select marcas)
 formProducto.insertBefore(selectModelos, formProducto.firstChild.nextSibling)
-
-console.log(selectMarcas);
-console.log(selectModelos);
 
 // evento change para actualizar el select secundario cuando haya un cambio en la opcion del select primario (marcas)
 document.getElementById("selectMarcas").onchange = () => {
@@ -90,7 +86,6 @@ formProducto.onsubmit = (e) => {
             nuevoProducto[key] = value.trim();
         }
     });
-    console.log(nuevoProducto);
 
     const datoVacio = campoVacio(nuevoProducto);
 

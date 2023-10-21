@@ -53,7 +53,6 @@ const contenidoIndex = () => {
 //? Variables guardadas en local storage
 
 const usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'))
-console.log(usuarioLogueado);
 
 const usuariosLS = JSON.parse(localStorage.getItem('usuarios'))
 const usuarios = usuariosLS ? usuariosLS.map(usuario => new Usuario(usuario)) : [];

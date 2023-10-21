@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/favicon-logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>GFCMusic - Administracion</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1>
+            <a href="../index.html">
+                <img class="header__logo" src="../img/header-logo.svg" alt="header-logo">
+                <span>GFCMusic | Administracion</span>
+            </a>
+        </h1>
+        <nav id='headerNavBar' class="header__nav oculto">
+            <ul class="header__menu">
+                <li id="headerUsuarioAdmin">
+                    <p>Administracion</p>
+                    <ul class="header__submenu oculto">
+                        <li><a href="./marcas.html">Marcas</a></li>
+                        <li><a href="./modelos.html">Modelos</a></li>
+                        <li><a href="./usuarios.html">Usuarios</a></li>
+                    </ul>
+                </li>
+                <li><a href="./productos.html">Productos</a></li>
+                <li><a href="">Stock</a></li>
+                <li><a href="./productosVenta.html">Productos para Venta</a></li>
+                <li><a href="">Ofertas</a></li>
+            </ul>
+        </nav>
+        <a href="" class="header__login">
+            <img src="../img/header-logueo.svg" alt="header-logueo">
+            <span id="headerUsuarioLogeueado">Iniciar Sesion</span>
+        </a>
+    </header>
+
+    <main class="mainCompra">
+        <div class="cotizacion">
+            <div class="msjAlerta oculto" id="alertaCompra"></div>
+            <div class="cotizacion__producto">
+                <div class="cotizacion__moneda">
+                    <div class="cotizacion__select">
+                        <label for="selectMoneda">Seleccione Una Moneda</label>
+                        <select name="moneda" id="selectMoneda">
+                            <option value="USD">Dólar Estadounidense</option>
+                            <option value="ARS">Peso Argentino</option>
+                            <option value="EUR">Euro</option>
+                        </select>
+                        <input type="number" step="0.01" min="0" id="inputMoneda" value="1"
+                            title="Ingresa un número con hasta dos decimales">
+                    </div>
+                    <div class="cotizacion__select">
+                        <label for="selectMonedaEquivalente">Valor Equivalente</label>
+                        <select name="moneda" id="selectMonedaEquivalente">
+                            <option value="ARS">Peso Argentino</option>
+                            <option value="USD">Dólar Estadounidense</option>
+                            <option value="EUR">Euro</option>
+                        </select>
+                        <input type="number" min="0" step="0.01" readonly id="conversionMoneda">
+                    </div>
+                </div>
+                <div class="cotizacion__imagen" id="productoImagen"></div>
+                <div class="cotizacion__datos" id="productoDatos"></div>
+            </div>
+            <p>SI la compra la va a realizar en efectivo con moneda extranjera, utilize el cotizador para conocer el total</p>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+    <script type="module" src="../js/header.js"></script>
+    <script type="module" src="../js/compraProducto.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

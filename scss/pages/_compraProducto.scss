@@ -1,0 +1,130 @@
+/* -- PAGE COMPRA DE UN PRODUCTO -- */
+
+.mainCompra {
+  margin-top: 120px;
+}
+
+.cotizacion {
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #feffc8;
+  border-radius: 16px;
+  max-width: 75vw;
+  p {
+    @extend %font-secondary-m;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  &__producto {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 200px .6fr .4fr;
+    column-gap: 10px;
+  }
+
+  &__moneda {
+    background-color: #f1ff71;
+    padding: 10px;
+    border-radius: 8px
+  }
+
+  &__select {
+    @extend %font-tertiary-m;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+
+    label {
+      display: block;
+      width: 100%;
+    }
+
+    select {
+      @extend %font-tertiary-s;
+      padding: 2px;
+      border: none;
+      background-color: hsla(0, 100%, 49%, 0.2);
+      width: 150px;
+    }
+
+    input {
+      @extend %font-tertiary-s;
+      padding: 2px;
+      width: 100px;
+      border: none;
+      background-color: hsla(0, 100%, 49%, 0.2);
+      width: 150px;
+
+      &:focus {
+        outline: none
+      }
+    }
+
+    ;
+  }
+
+  &__datos {
+    article {
+      @include column;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+      h3 {
+        @extend %font-tertiary-xl;
+      }
+
+      .descripcion {
+        @extend %font-tertiary-m;
+      }
+
+      .precio {
+        @extend %font-primary-l;
+        font-weight: 500;
+      }
+
+      .stock {
+        @extend %font-tertiary-m;
+      }
+
+      .btnComprar {
+        @extend %font-secondary-m;
+        font-weight: 600;
+        padding: 4px 10px;
+        border: none;
+        border-radius: .25rem;
+        background-color: #00ff62;
+        transition: background-color 1s ease, color 1s ease;
+        width: 50%;
+        margin: 0 auto;
+        cursor: pointer;
+        &:hover {
+          background-color: #165f00;
+          color: white
+        }
+      }
+
+      .btnDescartar {
+        @extend %font-secondary-m;
+        font-weight: 600;
+        padding: 4px 10px;
+        border: none;
+        border-radius: .25rem;
+        background-color: #ff5858;
+        transition: background-color 1s ease, color 1s ease;
+        cursor: pointer;
+        width: 50%;
+        margin: 0 auto;
+        &:hover {
+          background-color: #830000;
+          color: white
+        }
+      }
+    }
+  }
+
+
+}

@@ -38,6 +38,7 @@ let trModificado = [];
 // guardo en un array los id de los usuarios a eliminar
 let auxKeyEliminar = [];
 
+
 /**
  *
  * @param {Event} e evento click sobre la tabla que deseo modificar celdas
@@ -214,7 +215,6 @@ export const modificarDatosTablas = (
           arrayNuevosDatos.push(objetoModificado);
         });
 
-        console.log(arrayNuevosDatos);
         // verifico que todos los datos esten completos
         const datoVacio = campoVacio(arrayNuevosDatos);
 
@@ -272,6 +272,7 @@ export const modificarDatosTablas = (
                         trModificado = [];
                         eliminarBtn = false;
                         location.reload();
+
                         break;
                     }
                     break;
@@ -372,7 +373,7 @@ export const modificarDatosTablas = (
       };
     };
 
-    // decarto cualquier cambio realizado (modificacion o eliminar)
+    // descarto cualquier cambio realizado (modificacion o eliminar)
     document.getElementById(`${idTabla}DescartarBtn`).onclick = () => {
       document.getElementById(`${idTabla}EliminarBtn`).classList.add("oculto");
       document.getElementById(`${idTabla}AceptarBtn`).classList.add("oculto");
@@ -382,5 +383,5 @@ export const modificarDatosTablas = (
       auxKeyEliminar = [];
       trModificado = [];
     };
-  }
+  };
 };
