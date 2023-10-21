@@ -40,9 +40,9 @@ const calcularMoneda = async () => {
 const renderPrecio = (objeto) => {
 
 	const precioFormateado = Intl.NumberFormat("es-AR", {
-		currency: "ARS",
-		currencySymbol: "$",
-		minimumFractionDigits: 2
+		// currency: "ARS",
+		// currencySymbol: "$",
+		// minimumFractionDigits: 2
 	});
 
 	const container = document.createElement('article');
@@ -66,7 +66,7 @@ const renderPrecio = (objeto) => {
 	btnDescartar.textContent = 'DESCARTAR'
 	btnDescartar.classList.add('btnDescartar')
 	titulo.textContent = `${objeto.marca} ${objeto.modelo} ${objeto.origen}`
-	precio.textContent = `$ ${precioFormateado.format(parseFloat(objeto.precio))}`
+	precio.innerText = `$ ${objeto.precio}`
 	descripcion.textContent = objeto.descripcion
 
 	container.append(titulo, precio, descripcion, stock, btnComprar, btnDescartar)
@@ -76,7 +76,7 @@ const renderPrecio = (objeto) => {
 //! datos guardados en local  storage
 
 const productoComprar = JSON.parse(localStorage.getItem('productoComprar')) || {}
-
+console.log(productoComprar);
 //! eventos para actualizar las cotizaciones
 
 inputMoneda.addEventListener('change', calcularMoneda)
